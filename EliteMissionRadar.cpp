@@ -227,6 +227,7 @@ bool EvaluateMissionOCR(const cv::Mat& processedMat) {
     std::string text(ocrResult);
     delete[] ocrResult; // No memory leaks
 
+    // 全強制轉大寫進行名單庫物理匹配
     std::transform(text.begin(), text.end(), text.begin(), ::toupper);
 
     // Credits
@@ -1422,41 +1423,41 @@ int main() {
                     std::cout << "========================================================================================================\n";
 
                     std::cout << "\n[1. HOW IT WORKS IN PLAIN ENGLISH]\n";
-                    std::cout << "  • SUPER-FAST SCREEN SNIPER: This radar takes dozens of screenshots per second in the background,\n";
-                    std::cout << "    constantly reading everything on your board. If it finds your target keywords, IT WILL ALERT YOU IMMEDIATELY.\n";
-                    std::cout << "  • THE TELEMETRY BEATING: While you are scrolling, the background pulse tells you everything:\n";
+                    std::cout << "     SUPER-FAST SCREEN SNIPER: This radar takes dozens of screenshots per second in the background,\n";
+                    std::cout << "     constantly reading everything on your board. If it finds your target keywords, IT WILL ALERT YOU IMMEDIATELY.\n";
+                    std::cout << "     THE TELEMETRY BEATING: While you are scrolling, the background pulse tells you everything:\n";
                     std::cout << "    - Low Pitch Beep      : Everything is running perfectly fast. Zero risk of missing any missions.\n";
                     std::cout << "    - High Pitch Alert    : Your radar is lagging! This means your system is running too slow.\n";
                     std::cout << "                            Pay close attention, as the radar might drop tasks when running slow.\n";
 
                     std::cout << "\n[2. THE GOLDEN RULES - OR THE BOT GOES COMPLETELY BLIND]\n";
-                    std::cout << "  • CLASSIC ORANGE HUD ONLY: This bot ONLY reads the original, standard classic orange mission board.\n";
+                    std::cout << "    CLASSIC ORANGE HUD ONLY: This bot ONLY reads the original, standard classic orange mission board.\n";
                     std::cout << "    If you changed your HUD colors using EDHM or other graphics mods, THE BOT WILL GO COMPLETELY BLIND.\n";
-                    std::cout << "  • TARGET COLOR CONFIG: When running the wizard setup, you MUST choose the correct target colors!\n";
+                    std::cout << "    TARGET COLOR CONFIG: When running the wizard setup, you MUST choose the correct target colors!\n";
                     std::cout << "    If you setup the filters to look for the wrong text color, the radar will not recognize any words.\n";
-                    std::cout << "  • FOREGROUND ACTIVE ONLY: This software ONLY runs when Elite Dangerous is active and in the foreground.\n";
+                    std::cout << "    FOREGROUND ACTIVE ONLY: This software ONLY runs when Elite Dangerous is active and in the foreground.\n";
                     std::cout << "    DO NOT open a stationary screenshot of the game window on your desktop and complain that the bot is not working!\n";
 
                     std::cout << "\n[3. PERFORMANCE OVERLOAD WARNING]\n";
-                    std::cout << "  • DO NOT overload the system! If you turn OFF Blue Circle Priority while simultaneously enabling BOTH\n";
+                    std::cout << "    DO NOT overload the system! If you turn OFF Blue Circle Priority while simultaneously enabling BOTH\n";
                     std::cout << "    Gold Reward and White Name scanners, it will force full-screen sweeps and crawl at an extremely slow speed.\n";
                     std::cout << "    If your radar starts making a sharp, high-pitched telemetry noise, it means your FPS is lagging. Turn Blue Circle ON.\n";
 
                     std::cout << "\n[4. 100% BAN-SAFE / EULA GAME COMPLIANCE]\n";
-                    std::cout << "  • This utility does not read, write, modify, or inject anything into your Elite Dangerous game memory\n";
+                    std::cout << "    This utility does not read, write, modify, or inject anything into your Elite Dangerous game memory\n";
                     std::cout << "    or network packets. It is an independent screen-reading assistant that strictly abides by Frontier EULA.\n";
                     std::cout << "    It is 100% passive, completely undetectable, and absolutely Ban-Safe. Relax and use it safely.\n";
 
                     std::cout << "\n[5. CUSTOMER SUPPORT & CONTACT DISCLOSURE]\n";
-                    std::cout << "  • TECHNICAL SUPPORT EMAIL: jiahua960818@gmail.com\n";
-                    std::cout << "  • DEVELOPER NOTICE: I am a full-time student with an extremely heavy academic workload.\n";
-                    std::cout << "                       If you run into bugs or issues, feel free to send me an email. However,\n";
-                    std::cout << "                       it is completely normal and expected for me to take a few days to reply.\n";
-                    std::cout << "                       Thank you very much for your understanding and patience!\n";
+                    std::cout << "    TECHNICAL SUPPORT EMAIL: jiahua960818@gmail.com\n";
+                    std::cout << "    DEVELOPER NOTICE: I am a full-time student with an extremely heavy academic workload.\n";
+                    std::cout << "                      If you run into bugs or issues, feel free to send me an email. However,\n";
+                    std::cout << "                      it is completely normal and expected for me to take a few days to reply.\n";
+                    std::cout << "                      Thank you very much for your understanding and patience!\n";
 
                     std::cout << "\n[6. SUPPORT THE DEVELOPER / BUY ME A CUP OF COFFEE]\n";
-                    std::cout << "  If this high-speed anti-tearing mission radar saved your endless grinding hours and successfully\n";
-                    std::cout << "  sniped your high-value cargo boards, toss a few coins to buy the developer a cup of hot coffee!\n";
+                    std::cout << "  If this  radar saved your endless grinding hours and successfully sniped your high-value cargo boards,\n";
+                    std::cout << "  toss a few coins to buy the developer a cup of hot coffee!\n";
                     std::cout << "    https://ko-fi.com/fleogendepigge  \n";
 
                     std::cout << "========================================================================================================\n\n";
@@ -1882,3 +1883,4 @@ void RunFullSetupWizard() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 }
+
