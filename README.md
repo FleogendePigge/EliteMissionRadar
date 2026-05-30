@@ -36,12 +36,13 @@ Explains:
 
 If you only want to use the software, you can stop reading after Section 1.
 
-----------------------------------------------------------------------------------------------
+---
 
 # What Problem Does This Solve?
 
 While playing Elite Dangerous, I found myself spending a lot of time doing this:
 
+```text
 Open mission board
       ↓
 Read mission
@@ -54,6 +55,8 @@ Not interested
       ↓
 Read next mission
       ↓
+...
+```
 
 Most of the time I was only interested in a few specific mission types, materials, or reward levels.
 
@@ -71,6 +74,7 @@ Whenever a mission matching your filters appears, it immediately plays an alert 
 
 Simple.
 
+```text
 Mission Board
       ↓
 Scan
@@ -78,6 +82,7 @@ Scan
 Find Keywords
       ↓
 Alarm
+```
 
 ---
 
@@ -85,11 +90,11 @@ Alarm
 
 Suppose you are looking for:
 
-✔ Specific types of mission
+✔ Gold missions
 
-✔ WMM (Wing Mine Mission)
+✔ Silver missions
 
-✔ Rare material reward missions
+✔ High-value rewards
 
 But you do not want:
 
@@ -111,16 +116,17 @@ The software includes a built-in setup wizard and beginner-friendly instructions
 
 For most users:
 
+```text
 Download
       ↓
-Install
+Extract
       ↓
-Run
+Install
       ↓
 Follow Instructions
       ↓
 Done
-
+```
 
 No programming knowledge is required.
 
@@ -132,8 +138,9 @@ No programming knowledge is required.
 
 For most users, simply download the latest release and run the installer.
 
+```text
 EliteMissionRadar_Setup.exe
-
+```
 
 The installer will:
 
@@ -145,12 +152,13 @@ The installer will:
 
 After installation:
 
+```text
 Start Menu
       ↓
 Elite Mission Radar
       ↓
 Launch
-
+```
 
 The built-in setup wizard will guide you through the initial configuration.
 
@@ -172,24 +180,6 @@ Because the project is fully open source, anyone can:
 Modern AI assistants can usually help with the compilation process if you are unfamiliar with C++ development environments.
 
 Building from source provides the highest possible level of transparency.
-
----
-
-# Why Is The Source Code Public?
-
-Trust.
-
-This application captures screenshots and performs OCR.
-
-While the software never uploads data, never saves screenshots, and contains no networking functionality, I understand that users may still be cautious about running such a program.
-
-For that reason, the entire project is open source.
-
-You do not need to trust my claims.
-
-You can inspect the code yourself, ask others to review it, or compile it yourself from source.
-
-Transparency is the best security policy.
 
 ---
 
@@ -252,9 +242,11 @@ The radar does not:
 
 It simply helps you find missions faster.
 
-It did not bring you any unfair advantage.
-
 You still decide what to accept, what to ignore, and how to play.
+
+This did not create any unfair advantage.
+
+It's just a filtering machine, like the Elite Observatory.
 
 ---
 
@@ -298,9 +290,9 @@ If you are interested in how the software actually works internally, continue to
 
 
 
-# ============================================================
+# ====================================
 # PART 2 - Technical Documentation & Development Notes
-# ============================================================
+# ====================================
 
 This section is intended for developers and curious users.
 
@@ -315,9 +307,10 @@ The following sections explain how the scanner works internally, how the design 
 5. Performance Measurements
 6. Fingerprint System Deep Dive
 7. OCR Pipeline Deep Dive
-8. Known Limitations
-9. Future Improvements
-10. Why Open Source?
+8. Configuration System
+9. Known Limitations
+10. Future Improvements
+11. Why Open Source?
 
 ---
 
@@ -368,8 +361,9 @@ Performance-wise, it was a disaster.
 
 Typical performance:
 
+```text
 1-2 FPS
-
+```
 
 Testing revealed an important requirement.
 
@@ -411,7 +405,9 @@ This dramatically reduced OCR workload.
 
 Typical performance improved to:
 
+```text
 4-5 FPS
+```
 
 This was much better, but still not reliable enough.
 
@@ -451,7 +447,9 @@ Previously Seen?
 
 If the image matches a previously rejected mission:
 
+```text
 Skip OCR
+```
 
 The mission is immediately discarded.
 
@@ -459,7 +457,9 @@ Only genuinely new mission cards are allowed to reach the OCR engine.
 
 This optimization increased performance to approximately:
 
+```text
 12+ FPS
+```
 
 on the development machine.
 
@@ -503,7 +503,9 @@ Alert
 
 The most important architectural principle is:
 
+```text
 Avoid OCR whenever possible.
+```
 
 OCR is the most expensive operation in the entire pipeline.
 
@@ -799,8 +801,6 @@ OCR                     Very High
 
 As a result, most optimizations focus on reducing OCR calls.
 
----
-
 # Fingerprint System Deep Dive
 
 Fingerprint caching is one of the most important optimizations in the entire project.
@@ -823,9 +823,11 @@ This dramatically reduces duplicate OCR calls.
 
 Through experimentation, this size provided sufficient detail while remaining extremely cheap to compare.
 
-In particular, on a fingerprint sensor that is only 8 pixels high, the vertical distortion that often occurs when scrolling vertically is negligible.
+Smaller fingerprints increased collision rates.
 
----
+Larger fingerprints provided little practical benefit.
+
+The 8-pixel height is used to ignore the vertical distortion that often occurs when scrolling the panel.
 
 # OCR Pipeline Deep Dive
 
@@ -849,7 +851,21 @@ Keyword Matching
 
 Each stage exists because a previous version failed without it.
 
----
+# Configuration System
+
+The scanner is intentionally configurable.
+
+Players can modify:
+
+- White list
+- Black list
+- Reward requirements
+- Scan speed
+- Detection behavior
+
+Configuration changes immediately affect scanner behavior.
+
+Some changes automatically invalidate caches to prevent stale results.
 
 # Known Limitations
 
@@ -860,9 +876,7 @@ Each stage exists because a previous version failed without it.
 - OCR quality depends on screenshot quality.
 - The scanner only works when mission information is visible on screen.
 
-- ---
-
-# Future Improvements
+- # Future Improvements
 
 Potential future improvements include:
 
@@ -873,9 +887,7 @@ Potential future improvements include:
 - Better support for unusual resolutions
 - Optional machine-learning based filtering
 
-- ---
-
-# Why Open Source?
+- # Why Open Source?
 
 Elite Mission Radar performs screenshot capture and OCR.
 
