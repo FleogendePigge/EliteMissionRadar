@@ -4,6 +4,9 @@ A mission filtering assistant for Elite Dangerous.
 
 Instead of manually reading hundreds of mission entries, Elite Mission Radar watches the mission board for you and plays an alert when missions matching your criteria appear.
 
+Demonstration video: 
+https://drive.google.com/file/d/1_8dAN52fngNjONq4SJIFuqMMtBmKj-M8/view?usp=drive_link
+
 ---
 
 # Before You Continue
