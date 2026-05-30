@@ -227,7 +227,6 @@ bool EvaluateMissionOCR(const cv::Mat& processedMat) {
     std::string text(ocrResult);
     delete[] ocrResult; // No memory leaks
 
-    // 全強制轉大寫進行名單庫物理匹配
     std::transform(text.begin(), text.end(), text.begin(), ::toupper);
 
     // Credits
