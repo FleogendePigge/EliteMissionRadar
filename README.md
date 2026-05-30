@@ -90,11 +90,11 @@ Alarm
 
 Suppose you are looking for:
 
-✔ Gold missions
+✔ Specific types of missions
 
-✔ Silver missions
+✔ WMM (Wing Mine Mission)
 
-✔ High-value rewards
+✔ Rare material rewards
 
 But you do not want:
 
