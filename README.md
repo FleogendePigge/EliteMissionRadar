@@ -783,9 +783,9 @@ The following measurements were collected on the development machine.
 
 ## Performance Goal
 
-Testing showed that approximately 5 FPS is required to reliably scan mission boards during rapid scrolling.
+Testing showed that approximately 5 FPS is required to reliably scan mission boards during rapid scrolling:
 
-(If 75 tasks are scrolled through within 4 seconds, then 75/4 = 18.75 tasks must be filtered per second. The task panel displays 5 tasks simultaneously (selected tasks change color and become indistinguishable, so 6-1=5). Therefore, the minimum FPS is 18.75/5 = 3.75. Considering that the screen might refresh during screenshotting and become indistinguishable, the screenshot frequency should be at least 1.5 times higher, meaning an FPS of at least 3.75 * 1.5 = 5.625 is safer.)
+75 tasks are scrolled through in 4 seconds, requiring filtering 75/4 = 18.75 tasks per second. The task panel displays 5 tasks simultaneously (selected tasks change color and become indistinguishable, 6-1=5). Therefore, the minimum FPS is 18.75/5 = 3.75. Considering the possibility of the screen refreshing too quickly to see the selected task during screenshotting, a screenshot frequency of at least twice the normal rate (3.75 * 2 = 7.5 FPS) is the safest. At least 1.5 times the normal rate (3.75 * 1.5 = 5.625 FPS) carries extremely low risk (as far as I know, ED screens don't have black frames between refreshes, so even 1.5 times the normal rate is safe.)
 
 The scanner therefore prioritizes maintaining a stable scan rate above this threshold rather than maximizing raw FPS.
 
