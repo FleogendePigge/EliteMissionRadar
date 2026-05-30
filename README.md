@@ -181,6 +181,8 @@ Modern AI assistants can usually help with the compilation process if you are un
 
 Building from source provides the highest possible level of transparency.
 
+EliteMissionRadar.cpp
+
 ---
 
 ## Antivirus Warnings
