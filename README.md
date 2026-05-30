@@ -705,6 +705,8 @@ Permanent Rejection
 
 Several safeguards were added to reduce the chance of valuable missions being permanently filtered out by OCR mistakes.
 
+Specifically, it involves a mechanism for re-examining similar character roots.
+
 ---
 
 ## Resolution Is Not The Only Variable
